@@ -2,6 +2,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget child;
@@ -9,8 +10,6 @@ class CustomButton extends StatelessWidget {
   final List<Color> colors;
   final Alignment begin;
   final Alignment end;
-  final double borderRadius;
-  final EdgeInsets padding;
   final double width;
   final double height;
   final double elevation;
@@ -22,8 +21,6 @@ class CustomButton extends StatelessWidget {
     this.colors = const [Color(0xFFe68f50),Color(0xFFd49d6e)],
     this.begin = Alignment.topLeft,
     this.end = Alignment.topRight,
-    this.borderRadius = 30,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     required this.width,
     required this.height,
     this.elevation = 1.5
@@ -35,19 +32,19 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Material(
         elevation: elevation,
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(30.r),
         child: Container(
-          width: width,
-          height: height,
+          width: width.w,
+          height: height.h,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: colors,
               begin: begin,
               end: end,
             ),
-            borderRadius: BorderRadius.circular(borderRadius),
+            borderRadius: BorderRadius.circular(30.r),
           ),
-          padding: padding,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: Center(
             child: child,
           ),

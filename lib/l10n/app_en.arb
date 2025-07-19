@@ -1,0 +1,98 @@
+{
+
+  "welcomeBack": "Welcome back",
+  "enterDetails": "Enter your details below and get started",
+  "signInTitle": "Sign In",
+  "emailLabel": "Email",
+  "emailHint": "Enter your email address",
+  "emailEmptyError": "Please enter an email address",
+  "emailInvalidError": "Please enter a valid email address",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+  "passwordEmptyError": "Please enter your password",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot Password?",
+  "signInButton": "Sign In",
+  "signInSuccess": "Successfully signed in",
+  "signInWithGoogle": "Continue with Google",
+  "googleSignInSuccess": "Signed in with Google",
+  "googleSignInFailed": "Google sign-in failed",
+  "orSignInWith": "Or, sign in with",
+  "dontHaveAccount": "Don't have an account?",
+  "signUpButton": "Sign Up",
+
+
+  "createAccount": "Create account",
+  "enterDetailsSignup": "Enter your details below and join with us today",
+  "signUpTitle": "Sign Up",
+  "nameLabel": "Name",
+  "nameHint": "Enter your full name",
+  "nameEmptyError": "Please enter your name",
+  "passwordTooShortError": "Password should be a minimum of 6 characters",
+  "confirmPasswordLabel": "Confirm password",
+  "confirmPasswordHint": "Enter the correct password",
+  "confirmPasswordEmptyError": "Please confirm your password",
+  "passwordsDoNotMatchError": "Passwords don't match",
+  "signUpSuccess": "Successfully signed up, You can login now",
+  "alreadyHaveAccount": "Already have an account?",
+
+
+  "resetPasswordTitle": "Reset password",
+  "resetPasswordInstruction": "Don't worry! Please enter the email address linked with your account",
+  "enterYourEmail": "Enter your email",
+  "sendLinkButton": "Send link",
+  "resetSuccess": "Successfully sent a password reset link to your email",
+  "rememberPassword": "Remember password?",
+
+
+  "searchHint": "Search for notes",
+  "noInternet": "No internet connection",
+  "categoriesTitle": "Categories",
+  "allNotesTitle": "All notes",
+  "noNotesFound": "No notes found",
+  "noNotesToShow": "No notes to show",
+  "addNote": "Add note",
+  "addNoteTitle": "Add a note",
+  "noteTitleHint": "Enter a title",
+  "noteDescriptionHint": "Enter a description",
+  "noteTitleEmptyError": "Please enter a title",
+  "noteDescriptionEmptyError": "Please enter a description",
+  "selectCategory": "Select category",
+  "categoryEmptyError": "Please select a category",
+
+  "allCategory": "All",
+  "workCategory": "Work",
+  "personalCategory": "Personal",
+  "studyCategory": "Study",
+  "otherCategory": "Other",
+
+  "categoryLabel": "Category : ",
+  "cancelButton": "Cancel",
+  "updateButton": "Update",
+
+  "drawerChangeTheme": "Change theme",
+  "drawerChangeLanguage": "Change language",
+  "drawerEnglish": "English",
+  "drawerBangla": "বাংলা",
+  "drawerHistory": "History",
+  "drawerSignOut": "Sign out",
+  "drawerExitApp": "Exit app",
+  "guestUser": "Guest",
+  "noEmail": "No email",
+
+  "exitDialogTitle": "Wait",
+  "exitDialogContent": "Are you sure you want to exit from the app?",
+  "yes": "Yes",
+  "no": "No",
+
+
+  "internetRestored": "Internet connection restored",
+
+
+  "searchHistoryTitle": "Search history",
+  "pleaseLoginToViewHistory": "Please log in to view search history.",
+  "noHistoryToShow": "No history to show",
+  "youSearchedFor": "You searched for",
+
+  "lastUpdated" : "Last updated"
+}

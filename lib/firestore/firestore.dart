@@ -15,11 +15,19 @@ class FirestoreService{
 }
 
  Future<void> addNote(NoteModel note)async{
-   await noteCollection(note.uid).add(note.toMap());
+   await noteCollection(note.uid).add({
+     ...note.toMap(),
+     'createdAt' : FieldValue.serverTimestamp(),
+     'updatedAt': FieldValue.serverTimestamp(),
+   });
  }
 
  Future<void> updateNote(NoteModel note)async{
-   await noteCollection(note.uid).doc(note.id).update(note.toMap()); //ekhane doc(id) ta holo notes subcollection er noteId ta
+   await noteCollection(note.uid).doc(note.id).update({
+     ...note.toMap(),
+     'createdAt': note.createdAt,
+     'updatedAt': FieldValue.serverTimestamp(),
+   }); //ekhane doc(id) ta holo notes subcollection er noteId ta
  }
 
  Future<void> deleteNote(String uid, String id)async{ // ekhane duita parameter nisi karon amader pura notemodel dorkar nai tai
