@@ -1,5 +1,3 @@
-
-
 import 'package:back_to_firebase/provider/theme_provider/theme_provider.dart';
 import 'package:back_to_firebase/screens/auth_screens/sign_in/sign_in_page.dart';
 import 'package:back_to_firebase/screens/note_screens/all_notes/home.dart';
@@ -12,13 +10,13 @@ class CheckUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final user = FirebaseAuth.instance.currentUser;
-    if(user!=null){
-      return Home(onToggle: Provider.of<ThemeProvider>(context,listen: false).toggleTheme);
-    }
-    else{
-      return SignInPage();
+
+    if (user != null) {
+      return Home(onToggle: themeProvider.toggleTheme);
+    } else {
+      return const SignInPage();
     }
   }
 }
-

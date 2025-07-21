@@ -53,7 +53,7 @@ class _SearchHistoryState extends State<SearchHistory> {
             ),
         ],
       ),
-      body: user == null ? Center(
+      body: user == null?Center(
         child: Text(
           locale.pleaseLoginToViewHistory,
           style: theme.textTheme.titleMedium,

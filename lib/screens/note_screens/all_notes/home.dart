@@ -48,8 +48,6 @@ class _HomeState extends State<Home> {
   List<String> filteredCategory = ['All', 'Work', 'Personal', 'Study', 'Other'];
   String selectedFilteringCategory = 'All';
 
-
-
   List<String> dropDownCategory = ['Select category', 'Work', 'Personal', 'Study', 'Other'];
   String selectedDropDownCategory = 'Select category';
 
@@ -134,7 +132,7 @@ class _HomeState extends State<Home> {
                   hintStyle: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
-            SizedBox(height: 15.h),
+              SizedBox(height: 15.h),
               TextFormField(
                 cursorColor: const Color(0xFFe68f50),
                 controller: _desController,
@@ -150,11 +148,11 @@ class _HomeState extends State<Home> {
                   hintStyle: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
-             SizedBox(height: 15.h),
+              SizedBox(height: 15.h),
               DropdownButtonFormField(
                 dropdownColor: Theme.of(context).dropdownMenuTheme.menuStyle?.backgroundColor?.resolve({}) ?? Colors.white,
                 validator: (value){
-                  if(value==locale.selectCategory){
+                  if(value=='Select category'){
                     return locale.categoryEmptyError;
                   }
                   return null;
@@ -203,9 +201,9 @@ class _HomeState extends State<Home> {
                     ? Center(child: Loader.loaderWhite())
                     : Text(
                   locale.addNote, style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.sp),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.sp),
                 ),
               )
             ],
@@ -345,119 +343,119 @@ class _HomeState extends State<Home> {
             ),
           ),
           _buildDrawerTile(
-              context: context,
-              theme: theme,
-              icon: Icons.color_lens_outlined,
-              title: locale.drawerChangeTheme,
-              trailing: SizedBox(
+            context: context,
+            theme: theme,
+            icon: Icons.color_lens_outlined,
+            title: locale.drawerChangeTheme,
+            trailing: SizedBox(
+              width: 60.w,
+              child: FlutterSwitch(
                 width: 60.w,
-                child: FlutterSwitch(
-                  width: 60.w,
-                  height: 30.h,
-                  toggleSize: 25.r,
-                  value: isDark,
-                  borderRadius: 20.r,
-                  activeColor: Color(0xFF7685be),
-                  inactiveColor: Color(0xFFf0bb95),
-                  activeIcon: Icon(Icons.nightlight, color: Color(0xFF111524), size: 20.sp),
-                  inactiveIcon: Icon(Icons.sunny, color: Color(0xFFe68f50), size: 20.sp),
-                  activeToggleColor: Colors.white,
-                  inactiveToggleColor: Colors.white,
-                  onToggle: widget.onToggle,
-                ),
+                height: 30.h,
+                toggleSize: 25.r,
+                value: isDark,
+                borderRadius: 20.r,
+                activeColor: Color(0xFF7685be),
+                inactiveColor: Color(0xFFf0bb95),
+                activeIcon: Icon(Icons.nightlight, color: Color(0xFF111524), size: 20.sp),
+                inactiveIcon: Icon(Icons.sunny, color: Color(0xFFe68f50), size: 20.sp),
+                activeToggleColor: Colors.white,
+                inactiveToggleColor: Colors.white,
+                onToggle: widget.onToggle,
               ),
             ),
-            _buildDrawerTile(
-              context: context,
-              theme: theme,
-              icon: Icons.language,
-              title: locale.drawerChangeLanguage,
-              trailing: DropdownButton<Locale>(
-                dropdownColor: theme.dropdownMenuTheme.menuStyle?.backgroundColor?.resolve(({})),
-                value: Provider.of<LocaleProvider>(context).locale,
-                icon: Icon(Icons.arrow_drop_down, color: Colors.grey, size: 24.sp),
-                items: [
-                  DropdownMenuItem(
-                      value: Locale('en'),
-                      child: Text('English', style: theme.textTheme.titleMedium)),
-                  DropdownMenuItem(
-                      value: Locale('bn'),
-                      child: Text('বাংলা', style: theme.textTheme.titleMedium)),
-                ],
-                onChanged: (Locale? locale) {
-                  if (locale != null) {
-                    Provider.of<LocaleProvider>(context, listen: false).setLocale(locale);
-                  }
-                },
-              ),
-            ),
-            _buildDrawerTile(
-              context: context,
-              theme: theme,
-              icon: Icons.history,
-              title: locale.drawerHistory,
-              trailing: Icon(Icons.arrow_forward_ios_outlined,
-                  color: theme.iconTheme.color, size: 20.sp),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SearchHistory()));
-              },
-            ),
-            _buildDrawerTile(
-              context: context,
-              theme: theme,
-              icon: Icons.logout,
-              title: locale.drawerSignOut,
-              trailing: provider.isLoading
-                  ? (isDark ? Loader.loaderWhite() : Loader.loaderPurple())
-                  : Icon(Icons.arrow_forward_ios_outlined,
-                  color: theme.iconTheme.color, size: 20.sp),
-              onTap: () async {
-                bool success = await provider.signOut();
-                if (success) {
-                  Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (_) => const SignInPage()));
-                } else {
-                  ToastMsg.errorToast(provider.errorMsg!);
+          ),
+          _buildDrawerTile(
+            context: context,
+            theme: theme,
+            icon: Icons.language,
+            title: locale.drawerChangeLanguage,
+            trailing: DropdownButton<Locale>(
+              dropdownColor: theme.dropdownMenuTheme.menuStyle?.backgroundColor?.resolve(({})),
+              value: Provider.of<LocaleProvider>(context).locale,
+              icon: Icon(Icons.arrow_drop_down, color: Colors.grey, size: 24.sp),
+              items: [
+                DropdownMenuItem(
+                    value: Locale('en'),
+                    child: Text('English', style: theme.textTheme.titleMedium)),
+                DropdownMenuItem(
+                    value: Locale('bn'),
+                    child: Text('বাংলা', style: theme.textTheme.titleMedium)),
+              ],
+              onChanged: (Locale? locale) {
+                if (locale != null) {
+                  Provider.of<LocaleProvider>(context, listen: false).setLocale(locale);
                 }
               },
             ),
-            _buildDrawerTile(
-              context: context,
-              theme: theme,
-              icon: Icons.power_settings_new_outlined,
-              title: locale.drawerExitApp,
-              trailing: Icon(Icons.arrow_forward_ios_outlined,
-                  color: theme.iconTheme.color, size: 20.sp),
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (ctx) {
-                      return AlertDialog(
-                        backgroundColor:
-                        Theme.of(context).dialogTheme.backgroundColor,
-                        title: Text(locale.exitDialogTitle,
-                            style: theme.textTheme.titleLarge?.copyWith(fontSize: 18.sp)),
-                        content: Text(locale.exitDialogContent,
-                            style: theme.textTheme.titleMedium?.copyWith(fontSize: 16.sp)),
-                        actions: [
-                          TextButton(
-                              onPressed: () {
-                                SystemNavigator.pop();
-                              },
-                              child: Text(locale.yes,
-                                  style: theme.textTheme.titleMedium)),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(locale.no,
-                                  style: theme.textTheme.titleMedium)),
-                        ],
-                      );
-                    });
-              },
-            ),
+          ),
+          _buildDrawerTile(
+            context: context,
+            theme: theme,
+            icon: Icons.history,
+            title: locale.drawerHistory,
+            trailing: Icon(Icons.arrow_forward_ios_outlined,
+                color: theme.iconTheme.color, size: 20.sp),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SearchHistory()));
+            },
+          ),
+          _buildDrawerTile(
+            context: context,
+            theme: theme,
+            icon: Icons.logout,
+            title: locale.drawerSignOut,
+            trailing: provider.isLoading
+                ? (isDark ? Loader.loaderWhite() : Loader.loaderPurple())
+                : Icon(Icons.arrow_forward_ios_outlined,
+                color: theme.iconTheme.color, size: 20.sp),
+            onTap: () async {
+              bool success = await provider.signOut();
+              if (success) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => const SignInPage()));
+              } else {
+                ToastMsg.errorToast(provider.errorMsg!);
+              }
+            },
+          ),
+          _buildDrawerTile(
+            context: context,
+            theme: theme,
+            icon: Icons.power_settings_new_outlined,
+            title: locale.drawerExitApp,
+            trailing: Icon(Icons.arrow_forward_ios_outlined,
+                color: theme.iconTheme.color, size: 20.sp),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (ctx) {
+                    return AlertDialog(
+                      backgroundColor:
+                      Theme.of(context).dialogTheme.backgroundColor,
+                      title: Text(locale.exitDialogTitle,
+                          style: theme.textTheme.titleLarge?.copyWith(fontSize: 18.sp)),
+                      content: Text(locale.exitDialogContent,
+                          style: theme.textTheme.titleMedium?.copyWith(fontSize: 16.sp)),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              SystemNavigator.pop();
+                            },
+                            child: Text(locale.yes,
+                                style: theme.textTheme.titleMedium)),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(locale.no,
+                                style: theme.textTheme.titleMedium)),
+                      ],
+                    );
+                  });
+            },
+          ),
 
         ],
       ),

@@ -36,23 +36,28 @@ class AuthProvider extends ChangeNotifier{
     }
   }
 
-  Future<bool> signUp(String email, String password)async{
+  Future<bool> signUp(String name, String email, String password) async {
     _isLoading = true;
     notifyListeners();
 
-    try{
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      UserCredential credential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      await credential.user!.updateDisplayName(name);
+      await credential.user!.reload();
       return true;
-    }
-    on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       _errorMsg = e.message;
       return false;
-    }
-    finally{
+    } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
+
 
   Future<bool> signOut()async{
     _isLoading = true;
@@ -121,6 +126,20 @@ class AuthProvider extends ChangeNotifier{
     }
   }
 
-
+  Future<bool> signInAsAGuest() async {
+    _isLoading = true;
+    notifyListeners();
+    try {
+      await _auth.signInAnonymously();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      _errorMsg = e.message;
+      return false;
+    }
+    finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
 
 }

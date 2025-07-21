@@ -1,6 +1,5 @@
 import 'package:back_to_firebase/firebase_options.dart';
 import 'package:back_to_firebase/provider/auth_provider/auth_provider.dart';
-import 'package:back_to_firebase/provider/credentials_provider/credentials_provider.dart';
 import 'package:back_to_firebase/provider/history_provider/history_provider.dart';
 import 'package:back_to_firebase/provider/internet_provider/internet_checker_provider.dart';
 import 'package:back_to_firebase/provider/locale_provider/locale_provider.dart';
@@ -29,7 +28,6 @@ void main() async {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => HistoryProvider()),
         ChangeNotifierProvider(create: (_) => InternetCheckerProvider()),
-        ChangeNotifierProvider(create: (_) => CredentialsProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
       ],
       child: const MyApp(),
@@ -48,8 +46,8 @@ class MyApp extends StatelessWidget {
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation)=> ScreenUtilInit(
         designSize: orientation == Orientation.portrait?
-         Size(375, 812)
-        :Size(812, 375),
+        Size(375, 812)
+            :Size(812, 375),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {

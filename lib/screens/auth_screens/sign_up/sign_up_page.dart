@@ -117,6 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     bool success = await provider.signUp(
+                      _nameController.text,
                       _emailController.text.trim(),
                       _passController.text,
                     );
